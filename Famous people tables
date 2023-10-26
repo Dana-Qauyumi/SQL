@@ -1,0 +1,40 @@
+/* Create a table on famous people with details of their names, age and nationality. */
+CREATE TABLE famous_people ( 
+    id INTEGER PRIMARY KEY,
+    first_name TEXT,
+    last_name TEXT,
+    age INTEGER,
+    nationality TEXT);
+    
+INSERT INTO famous_people (id, first_name, last_name, age, nationality) VALUES 
+    (1, "Jenna", "Ortega", 21, "American"),
+    (2, "Khaled", "Hosseini", 58, "Afghan-American"),
+    (3, "Viola", "Davis", 58, "American"),
+    (4, "Steve", "Lacy", 25, "American"),
+    (5, "Shay", "Mitchell", 36, "Canadian"),
+    (6, "Cupcake", "Brown", 59, "American"),
+    (7, "Masie", "Williams", 26, "British"),
+    (8,"Paul", "Wesley", 41, "Polish");
+
+/* Create a table on the famous peoples' occupation and what they are best known for. */
+CREATE TABLE occupation (
+    id INTEGER PRIMARY KEY,
+    occupation TEXT,
+    known_for TEXT);
+    
+INSERT INTO occupation (id, occupation, known_for) VALUES
+    (1, "Actor", "TV Show - Wednesday"),
+    (2, "Author", "Book - The Kite Runner"),
+    (3, "Actor", "TV Show - How to Get Away with Murder"),
+    (4, "Singer", "Song - Static"),
+    (5, "Actor", "TV Show - Pretty Little Liars"),
+    (6, "Author", "Book - A Piece of Cake: A Memoir"),
+    (7, "Actor", "TV Show - Game of Thrones"),
+    (8, "Actor", "TV Show - The Vampire Diaries");
+
+/* Make a JOIN statement to create a human readable list of the famous peoples names, occupation and what they are best known for while ordering by age oldest to youngest. */
+SELECT f.first_name, f.last_name, o.occupation, o.known_for
+FROM famous_people AS f
+JOIN occupation AS o
+ON f.id = o.id
+ORDER BY age DESC;
